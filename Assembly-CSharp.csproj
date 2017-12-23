@@ -78,9 +78,6 @@
      <None Include="Assets\third_party_notices.txt" />
      <None Include="Assets\Haptic Project Components\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\license.txt" />
- <Reference Include="Assembly-CSharp-firstpass">
- <HintPath>C:/Users/Tal/Documents/GitHub/Senseperience/Senseperience/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
