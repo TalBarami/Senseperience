@@ -52,18 +52,38 @@ namespace Assets.Scenes
         [UnityTest]
         public IEnumerator TestBoxPrefabLoading()
         {
-            var sceneName = "TestScenario1";
+            var sceneName = "TestBox";
             var testScene = SceneManager.GetActiveScene();
             yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return new WaitForSeconds(1);
 
             var cubePrefab = GameObject.Find("BasicCube");
             Assert.NotNull(cubePrefab);
-           
+
             SceneManager.SetActiveScene(testScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
-        
+
+
+        [UnityTest]
+        public IEnumerator TestCursorCollideDetectGetter()
+        {
+            var sceneName = "TestBox";
+            var testScene = SceneManager.GetActiveScene();
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return new WaitForSeconds(1);
+
+            var cubePrefab = GameObject.Find("GeomagicPen");
+            yield return new WaitForSeconds(1);
+            var colDetect = cubePrefab.GetComponent<CollisionDetection>();
+            Assert.NotNull(colDetect);
+
+            SceneManager.SetActiveScene(testScene);
+            yield return SceneManager.UnloadSceneAsync(sceneName);
+        }
+
         private void SetupScene()
         {
             try
