@@ -147,6 +147,22 @@ namespace Assets.Scenes
         }
 
         [UnityTest]
+        public IEnumerator TestSphereSceneLoading()
+        {
+            const string sceneName = "TestSphere";
+            var testScene = SceneManager.GetActiveScene();
+
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+
+            Assert.AreEqual(sceneName, SceneManager.GetActiveScene().name);
+
+            SceneManager.SetActiveScene(testScene);
+            yield return SceneManager.UnloadSceneAsync(sceneName);
+
+        }
+
+        [UnityTest]
         public IEnumerator TestBoxPrefabLoading()
         {
             var sceneName = "TestBox";
