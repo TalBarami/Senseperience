@@ -13,24 +13,121 @@ namespace Assets.Scenes
         // A UnityTest behaves like a coroutine in PlayMode
         // and allows you to yield null to skip a frame in EditMode
         [UnityTest]
-        public IEnumerator CursorCollides()
+        public IEnumerator CursorCollidesInBoxScene()
         {
-            SetupScene();
-            for (var i = 0; i < 10; i++)
+            const string sceneName = "TestBox";
+            var testScene = SceneManager.GetActiveScene();
+
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return new WaitForSeconds(1);
+
+            for (var i = 0; i < 5; i++)
             {
+                var cubePrefab = GameObject.Find("GeomagicPen");
                 yield return new WaitForSeconds(1);
-                var o = GameObject.Find("GeomagicPen(Clone)");
-                CollisionDetection collisionDetection = o.GetComponent("CollisionDetection") as CollisionDetection;
-                if (collisionDetection != null)
+                var colDetect = cubePrefab.GetComponent<CollisionDetection>();
+                if (colDetect != null)
                 {
-                    if (collisionDetection.IsOnCollision)
-                    {
-                        yield break;
-                    }
+                    Assert.IsTrue(colDetect.IsOnCollision);
+                    break;
                 }
             }
 
-            Assert.Fail();
+            SceneManager.SetActiveScene(testScene);
+            yield return SceneManager.UnloadSceneAsync(sceneName);
+        }
+
+        [UnityTest]
+        public IEnumerator CursorCollidesInSphereScene()
+        {
+            const string sceneName = "TestSphere";
+            var testScene = SceneManager.GetActiveScene();
+
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return new WaitForSeconds(1);
+
+            for (var i = 0; i < 5; i++)
+            {
+                var cursorPrefab = GameObject.Find("GeomagicPen");
+                yield return new WaitForSeconds(1);
+                var colDetect = cursorPrefab.GetComponent<CollisionDetection>();
+                if (colDetect != null)
+                {
+                    Assert.IsTrue(colDetect.IsOnCollision);
+                    break;
+                }
+            }
+
+            SceneManager.SetActiveScene(testScene);
+            yield return SceneManager.UnloadSceneAsync(sceneName);
+        }
+
+        [UnityTest]
+        public IEnumerator CursorCollidesWithCube()
+        {
+            const string sceneName = "TestBox";
+            var testScene = SceneManager.GetActiveScene();
+
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return new WaitForSeconds(1);
+
+            for (var i = 0; i < 5; i++)
+            {
+                var cursorPrefab = GameObject.Find("GeomagicPen");
+                yield return new WaitForSeconds(1);
+
+                var colDetect = cursorPrefab.GetComponent<CollisionDetection>();
+                if (colDetect != null && colDetect.IsOnCollision)
+                {
+                    var otherCollider = colDetect.GetOther();
+                    var cubeType = GameObject.Find("BasicCube").GetType();
+                    Assert.AreEqual(cubeType, otherCollider.gameObject.GetType());
+                    yield break;
+                }
+                else
+                {
+                    Assert.Fail("component = "+colDetect);
+                }
+            }
+
+            SceneManager.SetActiveScene(testScene);
+            yield return SceneManager.UnloadSceneAsync(sceneName);
+        }
+
+        [UnityTest]
+        public IEnumerator CursorCollidesWithSphere()
+        {
+            const string sceneName = "TestSphere";
+            var testScene = SceneManager.GetActiveScene();
+
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return new WaitForSeconds(1);
+
+            for (var i = 0; i < 5; i++)
+            {
+                var cursorPrefab = GameObject.Find("GeomagicPen");
+                yield return new WaitForSeconds(1);
+
+                var colDetect = cursorPrefab.GetComponent<CollisionDetection>();
+                if (colDetect != null && colDetect.IsOnCollision)
+                {
+                    var otherCollider = colDetect.GetOther();
+                    var sphereType = GameObject.Find("Sphere").GetType();
+                    Assert.AreEqual(sphereType, otherCollider.gameObject.GetType());
+                    yield break;
+                }
+                else
+                {
+                    Assert.Fail("component = " + colDetect);
+                }
+            }
+
+            SceneManager.SetActiveScene(testScene);
+            yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
         [UnityTest]
@@ -60,6 +157,22 @@ namespace Assets.Scenes
 
             var cubePrefab = GameObject.Find("BasicCube");
             Assert.NotNull(cubePrefab);
+
+            SceneManager.SetActiveScene(testScene);
+            yield return SceneManager.UnloadSceneAsync(sceneName);
+        }
+
+        [UnityTest]
+        public IEnumerator TestSpherePrefabLoading()
+        {
+            var sceneName = "TestSphere";
+            var testScene = SceneManager.GetActiveScene();
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return new WaitForSeconds(1);
+
+            var spherePrefab = GameObject.Find("Sphere");
+            Assert.NotNull(spherePrefab);
 
             SceneManager.SetActiveScene(testScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
