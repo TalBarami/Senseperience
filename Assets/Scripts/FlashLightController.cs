@@ -3,23 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlashLightController : MonoBehaviour {
-    public Light light;
+    public Light flashlight;
+    public float capacity;
+    private float battery;
 
-	// Use this for initialization
-	void Start () {
+    private bool previousButtonState;
+
+    // Use this for initialization
+    void Start () {
+        battery = capacity;
+        previousButtonState = false;
 	}
 
-    bool previousButtonState = false;
 	// Update is called once per frame
 	void Update () {
-        if (!previousButtonState && PluginImport.GetButton2State())
+
+        if (PluginImport.GetButton2State() && battery > 0)
         {
-            light.enabled = true;
-            previousButtonState = true;
-        } else if(previousButtonState && !PluginImport.GetButton2State())
+            battery -= Time.deltaTime;
+            if (!previousButtonState)
+            {
+                flashlight.enabled = true;
+                previousButtonState = true;
+            }
+        }
+        else
         {
-            light.enabled = false;
-            previousButtonState = false;
+            if (!PluginImport.GetButton2State())
+            {
+                flashlight.enabled = false;
+                previousButtonState = false;
+            }
+
+            if (battery < capacity)
+            {
+                battery += Time.deltaTime / 10;
+            }
         }
 	}
 }
