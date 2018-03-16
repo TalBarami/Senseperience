@@ -234,8 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073828eb9d79f604581245d0e6391c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashlight: {fileID: 108087967045292970}
-  capacity: 30
+  flashlight: {fileID: 0}
+  capacity: 0
 --- !u!135 &135534228597347178
 SphereCollider:
   m_ObjectHideFlags: 1

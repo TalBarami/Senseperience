@@ -27,7 +27,6 @@ GameObject:
   - component: {fileID: 23731352420350944}
   - component: {fileID: 82385288367310692}
   - component: {fileID: 82262453526999468}
-  - component: {fileID: 114670335065090030}
   m_Layer: 0
   m_Name: BasicCube
   m_TagString: Touchable
@@ -309,15 +308,3 @@ MonoBehaviour:
   puncturedDynamicFriction: 0
   mass: 0.7
   fixedObj: 0
---- !u!114 &114670335065090030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1609750924572204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f348680622d4d09408c39cd91034c72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsOnCollision: 0
