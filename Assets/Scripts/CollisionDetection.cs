@@ -4,24 +4,24 @@ namespace Assets.Scripts
 {
     public class CollisionDetection : MonoBehaviour
     {
-        public bool IsOnCollision;
-        Collider other;
+        public bool IsOnCollision { get; set; }
+        public Collider Other;
 
-        void OnCollisionEnter(Collision col)
+        public void OnCollisionEnter(Collision col)
         {
             IsOnCollision = true;
-            other = col.collider;
+            Other = col.collider;
         }
 
-        void OnCollisionExit(Collision col)
+        /*public void OnCollisionExit(Collision col)
         {
             IsOnCollision = false;
-            other = null;
-        }
+            Other = null;
+        }*/
 
         public Collider GetOther()
         {
-            return other;
+            return Other;
         }
     }
 }
