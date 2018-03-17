@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 33848172846701270}
   - component: {fileID: 135534228597347178}
   - component: {fileID: 23215301731598150}
+  - component: {fileID: 114573104690180492}
   m_Layer: 0
   m_Name: GeomagicPen
   m_TagString: Untagged
@@ -223,6 +224,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114573104690180492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773205414334410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f348680622d4d09408c39cd91034c72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOnCollision: 0
 --- !u!114 &114846192260167636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 108087967045292970}
-  capacity: 30
+  capacity: 0
 --- !u!135 &135534228597347178
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -16,10 +16,13 @@ namespace Assets.Scenes
         public IEnumerator CursorCollidesInBoxScene()
         {
             const string sceneName = "TestBox";
-            var testScene = SceneManager.GetActiveScene();
+           // var activeScene = SceneManager.GetActiveScene();
 
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+
+            var testScene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(testScene);
+
             yield return new WaitForSeconds(1);
 
             for (var i = 0; i < 5; i++)
@@ -29,12 +32,18 @@ namespace Assets.Scenes
                 var colDetect = cubePrefab.GetComponent<CollisionDetection>();
                 if (colDetect != null)
                 {
-                    Assert.IsTrue(colDetect.IsOnCollision);
+                    Assert.IsTrue(colDetect.IsOnCollision, "Collision Detection Object: " + colDetect +
+                                                           "\nisCollision = " + colDetect.IsOnCollision);
                     break;
+                }
+                else
+                {
+                    Assert.Fail("Collision Detection Object: " + colDetect);
                 }
             }
 
-            SceneManager.SetActiveScene(testScene);
+            //yield return SceneManager.LoadSceneAsync(activeScene.name);
+            //SceneManager.SetActiveScene(activeScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
@@ -42,10 +51,13 @@ namespace Assets.Scenes
         public IEnumerator CursorCollidesInSphereScene()
         {
             const string sceneName = "TestSphere";
-            var testScene = SceneManager.GetActiveScene();
+            //var activeScene = SceneManager.GetActiveScene();
 
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+
+            var testScene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(testScene);
+
             yield return new WaitForSeconds(1);
 
             for (var i = 0; i < 5; i++)
@@ -55,12 +67,18 @@ namespace Assets.Scenes
                 var colDetect = cursorPrefab.GetComponent<CollisionDetection>();
                 if (colDetect != null)
                 {
-                    Assert.IsTrue(colDetect.IsOnCollision);
+                    Assert.IsTrue(colDetect.IsOnCollision, "Collision Detection Object: " + colDetect +
+                                                           "\nisCollision = " + colDetect.IsOnCollision);
                     break;
+                }
+                else
+                {
+                    Assert.Fail("Collision Detection Object: " + colDetect);
                 }
             }
 
-            SceneManager.SetActiveScene(testScene);
+            //yield return SceneManager.LoadSceneAsync(activeScene.name);
+            //SceneManager.SetActiveScene(activeScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
@@ -68,10 +86,13 @@ namespace Assets.Scenes
         public IEnumerator CursorCollidesWithCube()
         {
             const string sceneName = "TestBox";
-            var testScene = SceneManager.GetActiveScene();
+            //var activeScene = SceneManager.GetActiveScene();
 
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+
+            var testScene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(testScene);
+
             yield return new WaitForSeconds(1);
 
             for (var i = 0; i < 5; i++)
@@ -92,8 +113,8 @@ namespace Assets.Scenes
                     Assert.Fail("component = "+colDetect);
                 }
             }
-
-            SceneManager.SetActiveScene(testScene);
+            //yield return SceneManager.LoadSceneAsync(activeScene.name);
+            //SceneManager.SetActiveScene(activeScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
@@ -101,9 +122,9 @@ namespace Assets.Scenes
         public IEnumerator CursorCollidesWithSphere()
         {
             const string sceneName = "TestSphere";
-            var testScene = SceneManager.GetActiveScene();
+           // var testScene = SceneManager.GetActiveScene();
 
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             yield return new WaitForSeconds(1);
 
@@ -126,7 +147,7 @@ namespace Assets.Scenes
                 }
             }
 
-            SceneManager.SetActiveScene(testScene);
+            //SceneManager.SetActiveScene(testScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
@@ -134,14 +155,14 @@ namespace Assets.Scenes
         public IEnumerator TestBoxSceneLoading()
         {
             const string sceneName = "TestBox";
-            var testScene = SceneManager.GetActiveScene();
+            //var testScene = SceneManager.GetActiveScene();
             
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 
             Assert.AreEqual(sceneName, SceneManager.GetActiveScene().name);
 
-            SceneManager.SetActiveScene(testScene);
+            //SceneManager.SetActiveScene(testScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
 
         }
@@ -150,15 +171,15 @@ namespace Assets.Scenes
         public IEnumerator TestBoxPrefabLoading()
         {
             var sceneName = "TestBox";
-            var testScene = SceneManager.GetActiveScene();
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            //var testScene = SceneManager.GetActiveScene();
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             yield return new WaitForSeconds(1);
 
             var cubePrefab = GameObject.Find("BasicCube");
             Assert.NotNull(cubePrefab);
 
-            SceneManager.SetActiveScene(testScene);
+            //SceneManager.SetActiveScene(testScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
@@ -166,15 +187,15 @@ namespace Assets.Scenes
         public IEnumerator TestSpherePrefabLoading()
         {
             var sceneName = "TestSphere";
-            var testScene = SceneManager.GetActiveScene();
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            //var testScene = SceneManager.GetActiveScene();
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             yield return new WaitForSeconds(1);
 
             var spherePrefab = GameObject.Find("Sphere");
             Assert.NotNull(spherePrefab);
 
-            SceneManager.SetActiveScene(testScene);
+            //SceneManager.SetActiveScene(testScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
@@ -183,8 +204,8 @@ namespace Assets.Scenes
         public IEnumerator TestCursorCollideDetectGetter()
         {
             var sceneName = "TestBox";
-            var testScene = SceneManager.GetActiveScene();
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            //var testScene = SceneManager.GetActiveScene();
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             yield return new WaitForSeconds(1);
 
@@ -193,7 +214,7 @@ namespace Assets.Scenes
             var colDetect = cubePrefab.GetComponent<CollisionDetection>();
             Assert.NotNull(colDetect);
 
-            SceneManager.SetActiveScene(testScene);
+            //SceneManager.SetActiveScene(testScene);
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 

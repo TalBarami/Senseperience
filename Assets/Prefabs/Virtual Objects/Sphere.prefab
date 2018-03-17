@@ -27,7 +27,6 @@ GameObject:
   - component: {fileID: 23196067329280408}
   - component: {fileID: 82418559558553054}
   - component: {fileID: 82243264008844202}
-  - component: {fileID: 114834249108977634}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Touchable
@@ -275,18 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bdba2934762364f9340b54df7e7de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114834249108977634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1638790094648324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f348680622d4d09408c39cd91034c72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsOnCollision: 0
 --- !u!114 &114912821417141854
 MonoBehaviour:
   m_ObjectHideFlags: 1
