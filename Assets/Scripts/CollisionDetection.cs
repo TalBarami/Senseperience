@@ -7,7 +7,7 @@ namespace Assets.Scripts
 {
     public class CollisionDetection : MonoBehaviour
     {
-        public CollisionState CollisionState;
+        private CollisionState CollisionState;
 
         public CollisionState GetCollisionState()
         {

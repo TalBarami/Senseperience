@@ -17,7 +17,7 @@ namespace Assets.Scenes
         public IEnumerator CursorCollidesInBoxScene()
         {
             const string sceneName = "TestBox";
-           // var activeScene = SceneManager.GetActiveScene();
+            // var activeScene = SceneManager.GetActiveScene();
 
             yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
@@ -111,7 +111,7 @@ namespace Assets.Scenes
                 }
                 else
                 {
-                    Assert.Fail("component = "+colDetect);
+                    Assert.Fail("component = " + colDetect);
                 }
             }
             //yield return SceneManager.LoadSceneAsync(activeScene.name);
@@ -123,7 +123,7 @@ namespace Assets.Scenes
         public IEnumerator CursorCollidesWithSphere()
         {
             const string sceneName = "TestSphere";
-           // var testScene = SceneManager.GetActiveScene();
+            // var testScene = SceneManager.GetActiveScene();
 
             yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
@@ -157,7 +157,7 @@ namespace Assets.Scenes
         {
             const string sceneName = "TestBox";
             //var testScene = SceneManager.GetActiveScene();
-            
+
             yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 
@@ -238,30 +238,21 @@ namespace Assets.Scenes
                 if (colDetect != null)
                 {
                     var colState = colDetect.GetCollisionState();
+                    var msg = "CollisionState = " + colState;
                     switch (colState)
                     {
                         case CollisionState.None:
-                            {
-                                var collisionAudio = colDetect.GetCollisionAudioSource();
-                                Assert.IsFalse(collisionAudio.isPlaying);
-                                break;
-                            }
-                        case CollisionState.Enter:
-                            {
-                                var collisionAudio = colDetect.GetCollisionAudioSource();
-                                Assert.IsTrue(collisionAudio.isPlaying);
-                                break;
-                            }
-                        case CollisionState.Stay:
-                            {
-                                var collisionAudio = colDetect.GetCollisionAudioSource();
-                                Assert.IsFalse(collisionAudio.isPlaying);
-                                break;
-                            }
                         case CollisionState.Exit:
                             {
                                 var collisionAudio = colDetect.GetCollisionAudioSource();
-                                Assert.IsFalse(collisionAudio.isPlaying);
+                                Assert.IsFalse(collisionAudio.isPlaying, msg);
+                                break;
+                            }
+                        case CollisionState.Enter:
+                        case CollisionState.Stay:
+                            {
+                                var collisionAudio = colDetect.GetCollisionAudioSource();
+                                Assert.IsTrue(collisionAudio.isPlaying, msg);
                                 break;
                             }
                     }
@@ -272,7 +263,7 @@ namespace Assets.Scenes
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
-        [UnityTest]
+        //[UnityTest]
         public IEnumerator TestCollisionSoundOnSphere()
         {
             const string sceneName = "TestSphere";
@@ -288,33 +279,26 @@ namespace Assets.Scenes
                 var cubePrefab = GameObject.Find("Sphere");
                 yield return new WaitForSeconds(1);
                 var colDetect = cubePrefab.GetComponent<CollisionSoundController>();
+
                 if (colDetect != null)
                 {
                     var colState = colDetect.GetCollisionState();
+                    var msg = "CollisionState = " + colState;
+
                     switch (colState)
                     {
                         case CollisionState.None:
-                            {
-                                var collisionAudio = colDetect.GetCollisionAudioSource();
-                                Assert.IsFalse(collisionAudio.isPlaying);
-                                break;
-                            }
-                        case CollisionState.Enter:
-                            {
-                                var collisionAudio = colDetect.GetCollisionAudioSource();
-                                Assert.IsTrue(collisionAudio.isPlaying);
-                                break;
-                            }
-                        case CollisionState.Stay:
-                            {
-                                var collisionAudio = colDetect.GetCollisionAudioSource();
-                                Assert.IsFalse(collisionAudio.isPlaying);
-                                break;
-                            }
                         case CollisionState.Exit:
                             {
                                 var collisionAudio = colDetect.GetCollisionAudioSource();
-                                Assert.IsFalse(collisionAudio.isPlaying);
+                                Assert.IsFalse(collisionAudio.isPlaying, msg);
+                                break;
+                            }
+                        case CollisionState.Enter:
+                        case CollisionState.Stay:
+                            {
+                                var collisionAudio = colDetect.GetCollisionAudioSource();
+                                Assert.IsTrue(collisionAudio.isPlaying, msg);
                                 break;
                             }
                     }
