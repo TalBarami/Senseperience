@@ -17,9 +17,10 @@ public class ButtonController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Clicking = " + clicking + " , transform z is: " + this.transform.localPosition.z);
         if (clicking)
         {
-            if(this.transform.position.z > -0.15)
+            if(this.transform.localPosition.z > -0.15)
             {
                 OnButtonClick();
             }
@@ -28,7 +29,7 @@ public class ButtonController : MonoBehaviour {
                 this.transform.Translate((Vector3.forward * Time.deltaTime) / 5);
             }
         }
-        else if(this.transform.position.z > -0.4)
+        else if(this.transform.localPosition.z > -0.4)
         {
                 this.transform.Translate((Vector3.back * Time.deltaTime) / 5);
         }

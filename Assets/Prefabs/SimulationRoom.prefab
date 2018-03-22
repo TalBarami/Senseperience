@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 65932377997358934}
   - component: {fileID: 23090162057179252}
   m_Layer: 0
-  m_Name: Root
+  m_Name: Roof
   m_TagString: Touchable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
