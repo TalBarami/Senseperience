@@ -1,27 +1,37 @@
-﻿using UnityEngine;
+﻿using System;
+using System.ComponentModel;
+using Assets.Util;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class CollisionDetection : MonoBehaviour
     {
+        public CollisionState CollisionState;
+
+        public CollisionState GetCollisionState()
+        {
+            return CollisionState;
+        }
+
         public bool IsOnCollision { get; set; }
-        public Collider Other;
+        private Collider _other;
 
         public void OnCollisionEnter(Collision col)
         {
+            CollisionState = CollisionState.Enter;
             IsOnCollision = true;
-            Other = col.collider;
+            _other = col.collider;
         }
 
-        /*public void OnCollisionExit(Collision col)
+        public void OnCollisionExit(Collision col)
         {
-            IsOnCollision = false;
-            Other = null;
-        }*/
+            CollisionState = CollisionState.Exit;
+        }
 
         public Collider GetOther()
         {
-            return Other;
+            return _other;
         }
     }
 }

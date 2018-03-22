@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Assets.Scripts;
+using Assets.Util;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -218,22 +219,108 @@ namespace Assets.Scenes
             yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
-        private void SetupScene()
+        [UnityTest]
+        public IEnumerator TestCollisionSoundOnBox()
         {
-            try
+            const string sceneName = "TestBox";
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+
+            var testScene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(testScene);
+
+            yield return new WaitForSeconds(1);
+
+            for (var i = 0; i < 5; i++)
             {
-                InstantiateGameObject("BasicCube");
-                InstantiateGameObject("GeomagicPen");
+                var cubePrefab = GameObject.Find("BasicCube");
+                yield return new WaitForSeconds(1);
+                var colDetect = cubePrefab.GetComponent<CollisionSoundController>();
+                if (colDetect != null)
+                {
+                    switch (colDetect.CollisionState)
+                    {
+                        case CollisionState.None:
+                        {
+                            var collisionAudio = colDetect.GetCollisionAudioSource();
+                            Assert.IsFalse(collisionAudio.isPlaying);
+                            break;
+                        }
+                        case CollisionState.Enter:
+                        {
+                            var collisionAudio = colDetect.GetCollisionAudioSource();
+                            Assert.IsTrue(collisionAudio.isPlaying);
+                            break;
+                        }
+                        case CollisionState.Stay:
+                        {
+                            var collisionAudio = colDetect.GetCollisionAudioSource();
+                            Assert.IsFalse(collisionAudio.isPlaying);
+                            break;
+                        }
+                        case CollisionState.Exit:
+                        {
+                            var collisionAudio = colDetect.GetCollisionAudioSource();
+                            Assert.IsFalse(collisionAudio.isPlaying);
+                            break;
+                        }
+                    }
+                    break;
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            
+            yield return SceneManager.UnloadSceneAsync(sceneName);
         }
 
-        private void InstantiateGameObject(string name)
+        [UnityTest]
+        public IEnumerator TestCollisionSoundOnSphere()
         {
-            MonoBehaviour.Instantiate(Resources.Load<GameObject>(name));
+            const string sceneName = "TestSphere";
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+
+            var testScene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(testScene);
+
+            yield return new WaitForSeconds(1);
+
+            for (var i = 0; i < 5; i++)
+            {
+                var cubePrefab = GameObject.Find("Sphere");
+                yield return new WaitForSeconds(1);
+                var colDetect = cubePrefab.GetComponent<CollisionSoundController>();
+                if (colDetect != null)
+                {
+                    switch (colDetect.CollisionState)
+                    {
+                        case CollisionState.None:
+                            {
+                                var collisionAudio = colDetect.GetCollisionAudioSource();
+                                Assert.IsFalse(collisionAudio.isPlaying);
+                                break;
+                            }
+                        case CollisionState.Enter:
+                            {
+                                var collisionAudio = colDetect.GetCollisionAudioSource();
+                                Assert.IsTrue(collisionAudio.isPlaying);
+                                break;
+                            }
+                        case CollisionState.Stay:
+                            {
+                                var collisionAudio = colDetect.GetCollisionAudioSource();
+                                Assert.IsFalse(collisionAudio.isPlaying);
+                                break;
+                            }
+                        case CollisionState.Exit:
+                            {
+                                var collisionAudio = colDetect.GetCollisionAudioSource();
+                                Assert.IsFalse(collisionAudio.isPlaying);
+                                break;
+                            }
+                    }
+                    break;
+                }
+            }
+
+            yield return SceneManager.UnloadSceneAsync(sceneName);
         }
     }
 }
