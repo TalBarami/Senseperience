@@ -12,7 +12,7 @@ namespace Assets.Scenes
         public override void Execute()
         {
             Debug.Log("Starting Game Scene");
-            Destroy(GameObject.Find("Geomagic"));
+            Destroy(GameObject.Find("Geomagic_Basic"));
             Destroy(GameObject.Find("GeomagicPen"));
             SceneManager.LoadScene(sceneName);
         }
