@@ -20,13 +20,17 @@ GameObject:
   m_Component:
   - component: {fileID: 4693130448279146}
   - component: {fileID: 114896368803420864}
-  - component: {fileID: 114784449347581074}
+  - component: {fileID: 114005741525359338}
+  - component: {fileID: 114210393441932732}
   - component: {fileID: 114703670478797704}
   - component: {fileID: 114250944555353116}
+  - component: {fileID: 114743506105277652}
+  - component: {fileID: 114207485044276892}
+  - component: {fileID: 114422826031412006}
   - component: {fileID: 114116338734353032}
   - component: {fileID: 114663883979634294}
   m_Layer: 0
-  m_Name: Geomagic
+  m_Name: Geomagic_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +49,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114005741525359338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083780659480106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b9bab5862e54a46905cfc280270036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114116338734353032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,21 +85,85 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+--- !u!114 &114207485044276892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083780659480106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242682c64d306f34085d807c6954898b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: vibrationContact
+  effect_index: 3
+  gain: 0
+  magnitude: 0.2
+  duration: 0
+  frequency: 40
+  positionEffect:
+  - 0
+  - 0
+  - 0
+  directionEffect:
+  - 0
+  - 0
+  - 0
+--- !u!114 &114210393441932732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083780659480106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df03b88b2dee404e981611258c2de04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HapticMode: 
+  ModeIndex: 2
+  TouchableFace: front
+  device1Name: 
+  myHapticCamera: {fileID: 0}
+  workSpaceObj: {fileID: 0}
+  hapticCursor: {fileID: 0}
+  myWorkSpacePosition:
+  - 0
+  - 0
+  - 0
+  myWorkSpaceSize:
+  - 5
+  - 5
+  - 5
+  device2Name: 
+  mySecondHapticCamera: {fileID: 0}
+  secondWorkSpaceObj: {fileID: 0}
+  secondHapticCursor: {fileID: 0}
+  mySecondWorkSpacePosition:
+  - 0
+  - 0
+  - 0
+  mySecondWorkSpaceSize:
+  - 0
+  - 0
+  - 0
+  maxPenetration: 0
 --- !u!114 &114250944555353116
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083780659480106}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba949135bec396408eb8e03a0a81d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Type: viscous
   effect_index: 1
-  gain: 0.6
-  magnitude: 0.4
+  gain: 0.1
+  magnitude: 0.25
   duration: 0
   frequency: 0
   positionEffect:
@@ -94,6 +173,31 @@ MonoBehaviour:
   directionEffect:
   - 0
   - 0
+  - 0
+--- !u!114 &114422826031412006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083780659480106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a640c4ed8130ab047bb4526f82a9f4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: tangentialForce
+  effect_index: 4
+  gain: 0
+  magnitude: 1
+  duration: 0
+  frequency: 0
+  positionEffect:
+  - 0
+  - 0
+  - 0
+  directionEffect:
+  - 0
+  - 1
   - 0
 --- !u!114 &114663883979634294
 MonoBehaviour:
@@ -126,15 +230,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083780659480106}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfe4022347755cd46abf0d6955c28b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Type: constant
   effect_index: 0
-  gain: 0
-  magnitude: 0.25
+  gain: 0.35
+  magnitude: 0.6
   duration: 0
   frequency: 0
   positionEffect:
@@ -145,7 +249,7 @@ MonoBehaviour:
   - 0
   - -1
   - 0
---- !u!114 &114784449347581074
+--- !u!114 &114743506105277652
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -153,37 +257,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1083780659480106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7320eace700a957498cac850bd7c8b94, type: 3}
+  m_Script: {fileID: 11500000, guid: 60c2ec7c4e88ff148841ca7375a42f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HapticMode: 
-  ModeIndex: 1
-  TouchableFace: front
-  device1Name: 
-  myHapticCamera: {fileID: 0}
-  workSpaceObj: {fileID: 0}
-  hapticCursor: {fileID: 0}
-  myWorkSpacePosition:
-  - 0
-  - 0.5
-  - -1
-  myWorkSpaceSize:
-  - 5
-  - 3
-  - 5
-  device2Name: 
-  mySecondHapticCamera: {fileID: 0}
-  secondWorkSpaceObj: {fileID: 0}
-  secondHapticCursor: {fileID: 0}
-  mySecondWorkSpacePosition:
+  Type: vibrationMotor
+  effect_index: 2
+  gain: 0
+  magnitude: 0.4
+  duration: 0
+  frequency: 40
+  positionEffect:
   - 0
   - 0
   - 0
-  mySecondWorkSpaceSize:
+  directionEffect:
   - 0
   - 0
   - 0
-  maxPenetration: 0
 --- !u!114 &114896368803420864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,4 +285,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cd66fb7d2485e4ba45cf0aa0cc07ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myHapticClassScript: {fileID: 114784449347581074}
+  myHapticClassScript: {fileID: 114210393441932732}
