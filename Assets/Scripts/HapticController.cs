@@ -96,7 +96,9 @@ public class HapticController : HapticClassScript
         // if Mode = Manipulation Mode
         /***************************************************************/
         if (PluginImport.GetMode() == 1)
+        {
             ActivatingGrabbedObjectPropperties();
+        }
 
         /***************************************************************/
         //Update Workspace as function of camera
@@ -105,7 +107,9 @@ public class HapticController : HapticClassScript
 
         //Update the Workspace as function of camera
         for (int i = 0; i < workspaceUpdateValue.Length; i++)
+        {
             workspaceUpdateValue[i] = myHapticCamera.transform.rotation.eulerAngles.y;
+        }
 
         PluginImport.UpdateHapticWorkspace(ConverterClass.ConvertFloatArrayToIntPtr(workspaceUpdateValue));
 

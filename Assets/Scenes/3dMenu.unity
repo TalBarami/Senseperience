@@ -429,6 +429,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
+        type: 2}
+      propertyPath: HapticMode
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
+        type: 2}
+      propertyPath: ModeIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
   m_IsPrefabParent: 0
