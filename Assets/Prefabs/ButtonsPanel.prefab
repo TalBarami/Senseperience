@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23069145131530586}
   - component: {fileID: 114552648198751160}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: Button2
   m_TagString: Touchable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 23282712957010808}
   - component: {fileID: 114620865731748446}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Button1
   m_TagString: Touchable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 23707957617147104}
   - component: {fileID: 114104169160939508}
   m_Layer: 0
-  m_Name: Button (2)
+  m_Name: Button3
   m_TagString: Touchable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,7 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8fe195709a4ef4c92844e7fc2dcced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onButtonClick: {fileID: 0}
 --- !u!114 &114552648198751160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,7 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8fe195709a4ef4c92844e7fc2dcced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onButtonClick: {fileID: 0}
 --- !u!114 &114620865731748446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,4 +415,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8fe195709a4ef4c92844e7fc2dcced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onButtonClick: {fileID: 0}

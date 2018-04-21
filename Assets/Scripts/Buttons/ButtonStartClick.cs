@@ -7,12 +7,14 @@ namespace Assets.Scenes
 {
     public class ButtonStartClick : ButtonClickScript
     {
+        public string sceneName;
+
         public override void Execute()
         {
             Debug.Log("Starting Game Scene");
             Destroy(GameObject.Find("Geomagic"));
             Destroy(GameObject.Find("GeomagicPen"));
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(sceneName);
         }
 
         // Use this for initialization
