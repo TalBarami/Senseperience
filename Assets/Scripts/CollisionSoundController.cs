@@ -8,6 +8,7 @@ public class CollisionSoundController : MonoBehaviour
     AudioSource collisionAudio;
     AudioSource frictionAudio;
     private CollisionState collisionState;
+    double lastPlayed;
 
     public CollisionState GetCollisionState()
     {
@@ -29,7 +30,8 @@ public class CollisionSoundController : MonoBehaviour
     {
         var audios = GetComponents<AudioSource>();
         collisionAudio = audios[0];
-        frictionAudio = audios[1];
+        //frictionAudio = audios[1];
+        lastPlayed = Time.time;
         collisionState = CollisionState.None;
     }
 
@@ -42,7 +44,12 @@ public class CollisionSoundController : MonoBehaviour
     {
         collisionState = CollisionState.Enter;
         Debug.Log("Collision Enter");
-        collisionAudio.Play();
+        var currentTime = Time.time;
+        if(currentTime - lastPlayed > 0.3)
+        {
+            collisionAudio.Play();
+            lastPlayed = currentTime;
+        }
     }
 
     void OnCollisionStay(Collision collision)

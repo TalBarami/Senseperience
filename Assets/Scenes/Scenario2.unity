@@ -159,6 +159,92 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7a43ca2f554d6e4a980f3bdee51aafb, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &754203714
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4693130448279146, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693130448279146, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693130448279146, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693130448279146, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693130448279146, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693130448279146, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693130448279146, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693130448279146, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210393441932732, guid: 0cd0d96caf6d53a42b214d690589e86e,
+        type: 2}
+      propertyPath: myHapticCamera
+      value: 
+      objectReference: {fileID: 1539433552}
+    - target: {fileID: 114210393441932732, guid: 0cd0d96caf6d53a42b214d690589e86e,
+        type: 2}
+      propertyPath: hapticCursor
+      value: 
+      objectReference: {fileID: 2001865945}
+    - target: {fileID: 114210393441932732, guid: 0cd0d96caf6d53a42b214d690589e86e,
+        type: 2}
+      propertyPath: workSpaceObj
+      value: 
+      objectReference: {fileID: 1436425011}
+    - target: {fileID: 1083780659480106, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+      propertyPath: m_Name
+      value: Geomagic
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210393441932732, guid: 0cd0d96caf6d53a42b214d690589e86e,
+        type: 2}
+      propertyPath: myWorkSpaceSize.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210393441932732, guid: 0cd0d96caf6d53a42b214d690589e86e,
+        type: 2}
+      propertyPath: myWorkSpaceSize.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210393441932732, guid: 0cd0d96caf6d53a42b214d690589e86e,
+        type: 2}
+      propertyPath: myWorkSpaceSize.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210393441932732, guid: 0cd0d96caf6d53a42b214d690589e86e,
+        type: 2}
+      propertyPath: myWorkSpacePosition.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210393441932732, guid: 0cd0d96caf6d53a42b214d690589e86e,
+        type: 2}
+      propertyPath: myWorkSpacePosition.Array.data[2]
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0cd0d96caf6d53a42b214d690589e86e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &952930273
 Prefab:
   m_ObjectHideFlags: 0
@@ -392,113 +478,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b77eb834e5ac30b4f9f5fc20169e0efa, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1705700984
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4693130448279146, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4693130448279146, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4693130448279146, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4693130448279146, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4693130448279146, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4693130448279146, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4693130448279146, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4693130448279146, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114578295787495334, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: myHapticCamera
-      value: 
-      objectReference: {fileID: 1539433552}
-    - target: {fileID: 114578295787495334, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: hapticCursor
-      value: 
-      objectReference: {fileID: 2001865945}
-    - target: {fileID: 114578295787495334, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: workSpaceObj
-      value: 
-      objectReference: {fileID: 1436425011}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: myHapticCamera
-      value: 
-      objectReference: {fileID: 1539433552}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: hapticCursor
-      value: 
-      objectReference: {fileID: 2001865945}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: workSpaceObj
-      value: 
-      objectReference: {fileID: 1436425011}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: myWorkSpacePosition.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: myWorkSpacePosition.Array.data[1]
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: myWorkSpacePosition.Array.data[2]
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: myWorkSpaceSize.Array.data[0]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: myWorkSpaceSize.Array.data[1]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: myWorkSpaceSize.Array.data[2]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114784449347581074, guid: 93dbeb6e8a7599c4695391e6b4835b63,
-        type: 2}
-      propertyPath: ModeIndex
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 93dbeb6e8a7599c4695391e6b4835b63, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2001865945 stripped
 GameObject:
