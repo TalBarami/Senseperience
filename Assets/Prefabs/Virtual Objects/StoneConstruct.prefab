@@ -96,8 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stiffness: 1
   damping: 0
-  staticFriction: 0
-  dynamicFriction: 0
+  staticFriction: 0.4
+  dynamicFriction: 0.2
   tangentialStiffness: 0
   tangentialDamping: 0
   popThrough: 0

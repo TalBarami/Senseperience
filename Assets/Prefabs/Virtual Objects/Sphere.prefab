@@ -40,9 +40,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638790094648324}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.841, y: 0.689, z: 1.091}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -286,15 +286,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stiffness: 0.5
-  damping: 1
-  staticFriction: 0.2
-  dynamicFriction: 0.1
+  damping: 0.2
+  staticFriction: 0.3
+  dynamicFriction: 0.2
   tangentialStiffness: 0
   tangentialDamping: 0
   popThrough: 0
   puncturedStaticFriction: 0
   puncturedDynamicFriction: 0
-  mass: 0.1
+  mass: 0
   fixedObj: 0
 --- !u!135 &135135742545666874
 SphereCollider:

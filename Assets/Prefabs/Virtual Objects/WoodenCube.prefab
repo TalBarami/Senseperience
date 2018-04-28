@@ -297,12 +297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677ebbb83caddfd47bca964499877ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffness: 0.25
+  stiffness: 0.75
   damping: 0.25
-  staticFriction: 0.4
-  dynamicFriction: 0.3
-  tangentialStiffness: 0.8
-  tangentialDamping: 0.5
+  staticFriction: 0.6
+  dynamicFriction: 0.5
+  tangentialStiffness: 0
+  tangentialDamping: 0
   popThrough: 0
   puncturedStaticFriction: 0
   puncturedDynamicFriction: 0

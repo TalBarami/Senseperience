@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609750924572204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.625, y: -0.457, z: -0.396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -298,9 +298,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stiffness: 1
-  damping: 0.25
-  staticFriction: 0.2
-  dynamicFriction: 0.3
+  damping: 0
+  staticFriction: 0.8
+  dynamicFriction: 0.8
   tangentialStiffness: 0
   tangentialDamping: 0
   popThrough: 0
