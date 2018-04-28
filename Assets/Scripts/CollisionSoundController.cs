@@ -6,7 +6,6 @@ using UnityEngine;
 public class CollisionSoundController : MonoBehaviour
 {
     AudioSource collisionAudio;
-    AudioSource frictionAudio;
     private CollisionState collisionState;
     double lastPlayed;
 
@@ -19,18 +18,12 @@ public class CollisionSoundController : MonoBehaviour
     {
         return collisionAudio;
     }
-
-    public AudioSource GetFrictionAudioSource()
-    {
-        return frictionAudio;
-    }
-
+    
     // Use this for initialization
     void Start()
     {
         var audios = GetComponents<AudioSource>();
         collisionAudio = audios[0];
-        //frictionAudio = audios[1];
         lastPlayed = Time.time;
         collisionState = CollisionState.None;
     }

@@ -494,8 +494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: constant
   effect_index: 0
-  gain: 0
-  magnitude: 0.25
+  gain: 1
+  magnitude: 1
   duration: 0
   frequency: 0
   positionEffect:
@@ -504,7 +504,7 @@ MonoBehaviour:
   - 0
   directionEffect:
   - 0
-  - -1
+  - 1
   - 0
 --- !u!114 &752859613
 MonoBehaviour:
@@ -845,6 +845,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
