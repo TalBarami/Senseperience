@@ -36,7 +36,6 @@ public class CollisionSoundController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         collisionState = CollisionState.Enter;
-        Debug.Log("Collision Enter");
         var currentTime = Time.time;
         if(currentTime - lastPlayed > 0.3)
         {
@@ -48,13 +47,11 @@ public class CollisionSoundController : MonoBehaviour
     void OnCollisionStay(Collision collision)
     {
         collisionState = CollisionState.Stay;
-        Debug.Log("Collision Stay");
     }
 
     void OnCollisionExit(Collision collision)
     {
         collisionState = CollisionState.Exit;
-        Debug.Log("Collision Exit");
     }
 }
 

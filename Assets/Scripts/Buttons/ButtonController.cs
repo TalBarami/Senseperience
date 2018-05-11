@@ -35,20 +35,20 @@ public class ButtonController : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Button collided: " + other.gameObject.name);
+        //Debug.Log("Button collided: " + other.gameObject.name);
         //clicking = other.gameObject.name == penName;
         OnButtonClick();
     }
 
     void OnCollisionExit(Collision other)
     {
-        Debug.Log("Button exit: " + other.gameObject.name);
+        //Debug.Log("Button exit: " + other.gameObject.name);
         //clicking = false;
     }
 
     void OnButtonClick()
     {
-        Debug.Log("OnButtonClick");
+        //Debug.Log("OnButtonClick");
         GetComponent<ButtonClickScript>().Execute();
     }
 }
