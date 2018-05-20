@@ -2,58 +2,134 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Logger
 {
     public class LoggingScript : MonoBehaviour
     {
-        //private List<string> _toPersist;
-        //private SLogHandler _logHandler;
-        private string _logSavePath;
-
+        private readonly TimeSpan _timeInterval = TimeSpan.FromMilliseconds(50);
+        private List<string> _toPersist;
         private StreamWriter _writer;
+        private DateTime _lastWrittenDateTime;
+
+        public string LogSavePath;
+
+        public int TimeIntervalInMilliseconds;
+
+        private Guid _userNameGuid;
+        private string _username;
+        public string UserName;
+
+
         // Use this for initialization
         void Start()
         {
-            //_logHandler = new SLogHandler();
-            //_toPersist = new List<string>();
-            _logSavePath = Application.dataPath + "/Logs";
-            Debug.Log("Log files path: " + _logSavePath);
+            _toPersist = new List<string>();
+            _writer = new StreamWriter(GetLogPath(), true);
+            _lastWrittenDateTime = DateTime.MinValue;
+            
+            AddToLog("\n\n----------------------------- " + name + " Log -----------------------------");
+            AddToLog("----------------------------- " + DateTime.Now + " -----------------------------");
 
-            if (!Directory.Exists(Application.dataPath))
-            {
-                Directory.CreateDirectory(_logSavePath);
-            }
-
-            _logSavePath += "/" + name + ".txt";
-            _writer = new StreamWriter(_logSavePath, true);
-
-            _writer.WriteLine("\n\n----------------------------- " + name + " Log -----------------------------");
-            _writer.WriteLine("----------------------------- " + DateTime.Now + " -----------------------------");
-
+            var sceneName = SceneManager.GetActiveScene().name;
+            AddToLog("=> Active Scene: " + sceneName);
+            AddToLog("=> Player: " + GetUserName());
+            AddToLog("--------------------------------------------------------------------------------");
             //Application.logMessageReceived += HandleLog;
         }
 
         void FixedUpdate()
         {
-            if (transform.hasChanged)
-            {
-                var dateTime = DateTime.Now;
-                _writer.WriteLine(dateTime + " | "+name+" | Position: " + transform.position);
+            var now = DateTime.Now;
+            if (!transform.hasChanged || !IsTimeToWrite(now)) return;
 
-            }
-
-            //_toPersist.Add("I'm inside " + name + "!");
+            AddToLog("Position Changed: " + transform.position, now);
+            _lastWrittenDateTime = now;
         }
 
-        
+        public void OnCollisionEnter(Collision col)
+        {
+            AddToLog("Collision Enter: Collided with "+col.gameObject.name, DateTime.Now);
+        }
+
+        public void OnCollisionExit(Collision col)
+        {
+            AddToLog("Collision Exit: Collided with " + col.gameObject.name, DateTime.Now);
+        }
+
+
+        private bool IsTimeToWrite(DateTime dateTime)
+        {
+            var timePassed = dateTime.Subtract(_lastWrittenDateTime);
+            return timePassed.TotalMilliseconds >= TimeIntervalInMilliseconds;
+        }
+
         void OnDisable()
         {
             //Application.logMessageReceived -= HandleLog;
+            //Debug.Log("Entered OnDisable\n");
+            foreach (var msg in _toPersist)
+            {
+                _writer.WriteLine(msg);
+            }
+
             _writer.Flush();
             _writer.Close();
         }
+
+        private void AddToLog(string msg, DateTime now = default(DateTime))
+        {
+            //Debug.Log(msg);
+            if (!now.Equals(default(DateTime)))
+            {
+                msg = now + " | " + msg;
+            }
+            _toPersist.Add(msg);
+            //_writer.WriteLine(msg);
+        }
+
+        private string GenerateUserName()
+        {
+            var newGuid = Guid.NewGuid().ToString();
+            var length = (newGuid.Length / 4) - 1;
+            var generatedShortGuid = newGuid.Substring(0, length);
+            return "User_" + generatedShortGuid;
+        }
+
+        public string GetUserName()
+        {
+            if (!string.IsNullOrEmpty(UserName)) return UserName;
+
+            if (string.IsNullOrEmpty(_username))
+            {
+                _username = GenerateUserName();
+            }
+            UserName = _username;
+
+            return UserName;
+        }
+
+        private string GetLogPath()
+        {
+            if (string.IsNullOrEmpty(LogSavePath))
+            {
+                LogSavePath = Application.dataPath + "/Logs";
+                //Debug.Log("Log files path: " + LogSavePath);
+
+                if (!Directory.Exists(Application.dataPath))
+                {
+                    Directory.CreateDirectory(LogSavePath);
+                }
+
+                LogSavePath += "/" + name + ".txt";
+            }
+
+            return LogSavePath;
+        }
+
         /*
         void HandleLog(string logString, string stackTrace, LogType type)
         {
