@@ -46,9 +46,20 @@ namespace Assets.Scripts.Logger
             var now = DateTime.Now;
             if (!transform.hasChanged || !IsTimeToWrite(now)) return;
 
-            AddToLog(now + " | " + name + " | Position: " + transform.position);
-            _lastWrittenDateTime = DateTime.Now;
+            AddToLog("Position Changed: " + transform.position, now);
+            _lastWrittenDateTime = now;
         }
+
+        public void OnCollisionEnter(Collision col)
+        {
+            AddToLog("Collision Enter: Collided with "+col.gameObject.name, DateTime.Now);
+        }
+
+        public void OnCollisionExit(Collision col)
+        {
+            AddToLog("Collision Exit: Collided with " + col.gameObject.name, DateTime.Now);
+        }
+
 
         private bool IsTimeToWrite(DateTime dateTime)
         {
@@ -69,9 +80,13 @@ namespace Assets.Scripts.Logger
             _writer.Close();
         }
 
-        private void AddToLog(string msg)
+        private void AddToLog(string msg, DateTime now = default(DateTime))
         {
             //Debug.Log(msg);
+            if (!now.Equals(default(DateTime)))
+            {
+                msg = now + " | " + msg;
+            }
             _toPersist.Add(msg);
             //_writer.WriteLine(msg);
         }
