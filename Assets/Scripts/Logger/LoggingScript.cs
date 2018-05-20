@@ -10,60 +10,56 @@ namespace Assets.Scripts.Logger
 {
     public class LoggingScript : MonoBehaviour
     {
+        private readonly TimeSpan _timeInterval = TimeSpan.FromMilliseconds(50);
         private List<string> _toPersist;
-        
-        private Guid _userNameGuid; 
-        //private SLogHandler _logHandler;
-
-        public string LogSavePath { get; set; }
-        private string _username;
-
-        public string UserName;
-        
         private StreamWriter _writer;
+        private DateTime _lastWrittenDateTime;
+
+        public string LogSavePath;
+
+        public int TimeIntervalInMilliseconds;
+
+        private Guid _userNameGuid;
+        private string _username;
+        public string UserName;
+
+
         // Use this for initialization
         void Start()
         {
-            //_logHandler = new SLogHandler();
-            //_toPersist = new List<string>();
-            LogSavePath = LogSavePath ?? Application.dataPath + "/Logs";
-            //Debug.Log("Log files path: " + LogSavePath);
-
-            if (!Directory.Exists(Application.dataPath))
-            {
-                Directory.CreateDirectory(LogSavePath);
-            }
-
-            LogSavePath += "/" + name + ".txt";
-
-            _writer = new StreamWriter(LogSavePath, true);
             _toPersist = new List<string>();
-
+            _writer = new StreamWriter(GetLogPath(), true);
+            _lastWrittenDateTime = DateTime.MinValue;
+            
             AddToLog("\n\n----------------------------- " + name + " Log -----------------------------");
             AddToLog("----------------------------- " + DateTime.Now + " -----------------------------");
 
             var sceneName = SceneManager.GetActiveScene().name;
-            AddToLog("=> Active Scene: " +sceneName);
-            AddToLog("=> Player: "+GetUserName());
+            AddToLog("=> Active Scene: " + sceneName);
+            AddToLog("=> Player: " + GetUserName());
             AddToLog("--------------------------------------------------------------------------------");
             //Application.logMessageReceived += HandleLog;
         }
 
         void FixedUpdate()
         {
-            if (transform.hasChanged)
-            {
-                var dateTime = DateTime.Now;
-               AddToLog(dateTime + " | " + name + " | Position: " + transform.position);
+            var now = DateTime.Now;
+            if (!transform.hasChanged || !IsTimeToWrite(now)) return;
 
-            }
+            AddToLog(now + " | " + name + " | Position: " + transform.position);
+            _lastWrittenDateTime = DateTime.Now;
         }
 
-        
+        private bool IsTimeToWrite(DateTime dateTime)
+        {
+            var timePassed = dateTime.Subtract(_lastWrittenDateTime);
+            return timePassed.TotalMilliseconds >= TimeIntervalInMilliseconds;
+        }
+
         void OnDisable()
         {
             //Application.logMessageReceived -= HandleLog;
-            
+            //Debug.Log("Entered OnDisable\n");
             foreach (var msg in _toPersist)
             {
                 _writer.WriteLine(msg);
@@ -75,6 +71,7 @@ namespace Assets.Scripts.Logger
 
         private void AddToLog(string msg)
         {
+            //Debug.Log(msg);
             _toPersist.Add(msg);
             //_writer.WriteLine(msg);
         }
@@ -82,19 +79,40 @@ namespace Assets.Scripts.Logger
         private string GenerateUserName()
         {
             var newGuid = Guid.NewGuid().ToString();
-            var generatedShortGuid = newGuid.Substring(0, newGuid.Length / 2);
+            var length = (newGuid.Length / 4) - 1;
+            var generatedShortGuid = newGuid.Substring(0, length);
             return "User_" + generatedShortGuid;
         }
 
         public string GetUserName()
         {
+            if (!string.IsNullOrEmpty(UserName)) return UserName;
+
             if (string.IsNullOrEmpty(_username))
             {
                 _username = GenerateUserName();
             }
-
             UserName = _username;
-            return _username;
+
+            return UserName;
+        }
+
+        private string GetLogPath()
+        {
+            if (string.IsNullOrEmpty(LogSavePath))
+            {
+                LogSavePath = Application.dataPath + "/Logs";
+                //Debug.Log("Log files path: " + LogSavePath);
+
+                if (!Directory.Exists(Application.dataPath))
+                {
+                    Directory.CreateDirectory(LogSavePath);
+                }
+
+                LogSavePath += "/" + name + ".txt";
+            }
+
+            return LogSavePath;
         }
 
         /*
