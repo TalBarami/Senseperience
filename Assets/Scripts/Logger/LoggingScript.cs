@@ -10,6 +10,7 @@ namespace Assets.Scripts.Logger
 {
     public class LoggingScript : MonoBehaviour
     {
+        private const string PositionPrefix = "Position Changed: ";
         private readonly TimeSpan _timeInterval = TimeSpan.FromMilliseconds(50);
         private List<string> _toPersist;
         private StreamWriter _writer;
@@ -62,13 +63,16 @@ namespace Assets.Scripts.Logger
             var now = DateTime.Now;
             if (transform.hasChanged || IsPositionChanged(transform.position) || IsTimeToWrite(now))
             {
-                var position = transform.position;
-                AddToLog("Position Changed: " + position, now);
-                _lastWrittenDateTime = now;
-                _lastWrittenPosition = position;
-                transform.hasChanged = false;
+                WritePositionToLog(transform.position, now);
             }
 
+        }
+
+        private void WritePositionToLog(Vector3 position, DateTime logTime) {
+            AddToLog(PositionPrefix + position, logTime);
+            _lastWrittenDateTime = logTime;
+            _lastWrittenPosition = position;
+            transform.hasChanged = false;
         }
 
         private bool IsPositionChanged(Vector3 position)
@@ -99,10 +103,28 @@ namespace Assets.Scripts.Logger
             //Application.logMessageReceived -= HandleLog;
             //Debug.Log("Entered OnDisable\n");
             //SceneManager.sceneLoaded -=On
-            if (_writer == null) return;
-
             AddToLog("\n----------------------------- End Of Log -----------------------------");
 
+            FlushToFile();
+
+            var vectors = ReadPositionsFromLogFile();
+            _writer = new StreamWriter(GetLogPath(), true);
+            _toPersist.Clear();
+
+            for (int i = 0; i < vectors.Length; i++)
+            {
+                if (vectors[i] != default(Vector3))
+                {
+                    AddToLog("Found Position: " + vectors[i]);
+                }
+            }
+
+            FlushToFile();
+        }
+
+        private void FlushToFile()
+        {
+            if (_writer == null) return;
 
             foreach (var msg in _toPersist)
             {
@@ -122,6 +144,62 @@ namespace Assets.Scripts.Logger
             }
             _toPersist.Add(msg);
             //_writer.WriteLine(msg);
+        }
+
+        private Vector3[] ReadPositionsFromLogFile()
+        {
+            StreamReader reader = new StreamReader(GetLogPath());
+            var inputFile = reader.ReadToEnd();
+            var lines = ExtractPsitionStrings(inputFile.Split("\n"[0]));
+            
+            Vector3[] vectors = new Vector3[lines.Length];
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var current = lines[i];
+                //Debug.Log("Line " + i + ": " + current);
+                //Debug.Log("Line length = " + current.Length);
+
+
+                //Debug.Log("Converting \"" + current + "\" to vector");
+
+                vectors[i] = StringToVector3(current);
+                //Debug.Log("Read the following vector: " + vectors[i]);
+
+
+            }
+
+            reader.Close();
+            return vectors;
+        }
+
+        public static Vector3 StringToVector3(string sVector)
+        {
+            if (sVector.Length < 3) return default(Vector3);
+                //Debug.Log("Removing parentheses");
+                sVector = sVector.Substring(1, sVector.Length - 3);
+            //Debug.Log("Splitting: "+sVector);
+            string[] sArray = sVector.Split(',');
+
+            return new Vector3(
+                float.Parse(sArray[0]),
+                float.Parse(sArray[1]),
+                float.Parse(sArray[2]));
+        }
+
+        private string[] ExtractPsitionStrings(string[] lines)
+        {
+            var extracted = new string[lines.Length];
+            for (int i = 0; i < lines.Length; i++)
+            {
+                extracted[i] = string.Empty;
+                var startOfPrefix = lines[i].IndexOf(PositionPrefix);
+                if (startOfPrefix < 0) continue;
+                var lengthToRead = lines[i].Length - (startOfPrefix + PositionPrefix.Length);
+                extracted[i] = (lines[i].Substring(startOfPrefix + PositionPrefix.Length, lengthToRead));
+            }
+
+            return extracted;
         }
 
         private string GenerateUserName()
