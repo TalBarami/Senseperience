@@ -14,15 +14,26 @@ namespace Assets.Scripts.Logger
         private List<string> _toPersist;
         private StreamWriter _writer;
         private DateTime _lastWrittenDateTime;
+        private Vector3 _lastWrittenPosition;
 
         public string LogSavePath;
-
+        public string FileName;
         public int TimeIntervalInMilliseconds;
 
         private Guid _userNameGuid;
         private string _username;
         public string UserName;
 
+        private string SceneName;
+
+        /*void OnEnable() {
+            SceneManager.sceneLoaded += OnSceneFinishedLoading;
+        }
+
+        void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+        {
+            Debug.Log("Scene" + scene.name + " Loaded");
+        }*/
 
         // Use this for initialization
         void Start()
@@ -30,12 +41,17 @@ namespace Assets.Scripts.Logger
             _toPersist = new List<string>();
             _writer = new StreamWriter(GetLogPath(), true);
             _lastWrittenDateTime = DateTime.MinValue;
-            
+            _lastWrittenPosition = transform.position;
+
+            if (TimeIntervalInMilliseconds == 0) {
+                TimeIntervalInMilliseconds = _timeInterval.Milliseconds;
+            }
+
             AddToLog("\n\n----------------------------- " + name + " Log -----------------------------");
             AddToLog("----------------------------- " + DateTime.Now + " -----------------------------");
 
-            var sceneName = SceneManager.GetActiveScene().name;
-            AddToLog("=> Active Scene: " + sceneName);
+            SceneName = string.IsNullOrEmpty(SceneName) ? SceneManager.GetActiveScene().name : SceneName;
+            AddToLog("=> Active Scene: " + SceneName);
             AddToLog("=> Player: " + GetUserName());
             AddToLog("--------------------------------------------------------------------------------");
             //Application.logMessageReceived += HandleLog;
@@ -44,10 +60,21 @@ namespace Assets.Scripts.Logger
         void FixedUpdate()
         {
             var now = DateTime.Now;
-            if (!transform.hasChanged || !IsTimeToWrite(now)) return;
+            if (transform.hasChanged || IsPositionChanged(transform.position) || IsTimeToWrite(now))
+            {
+                var position = transform.position;
+                AddToLog("Position Changed: " + position, now);
+                _lastWrittenDateTime = now;
+                _lastWrittenPosition = position;
+                transform.hasChanged = false;
+            }
 
-            AddToLog("Position Changed: " + transform.position, now);
-            _lastWrittenDateTime = now;
+        }
+
+        private bool IsPositionChanged(Vector3 position)
+        {
+            var distance = Vector3.Distance(position, _lastWrittenPosition);
+            return distance > 0.01;
         }
 
         public void OnCollisionEnter(Collision col)
@@ -71,6 +98,12 @@ namespace Assets.Scripts.Logger
         {
             //Application.logMessageReceived -= HandleLog;
             //Debug.Log("Entered OnDisable\n");
+            //SceneManager.sceneLoaded -=On
+            if (_writer == null) return;
+
+            AddToLog("\n----------------------------- End Of Log -----------------------------");
+
+
             foreach (var msg in _toPersist)
             {
                 _writer.WriteLine(msg);
@@ -124,7 +157,11 @@ namespace Assets.Scripts.Logger
                     Directory.CreateDirectory(LogSavePath);
                 }
 
-                LogSavePath += "/" + name + ".txt";
+                if (string.IsNullOrEmpty(FileName)) {
+                    SceneName = string.IsNullOrEmpty(SceneName) ? SceneManager.GetActiveScene().name : SceneName;
+                    FileName = DateTime.Now.ToFileTime() + "_" + SceneName + "_" + name;
+                }
+                LogSavePath += "/" + FileName + ".txt";
             }
 
             return LogSavePath;
