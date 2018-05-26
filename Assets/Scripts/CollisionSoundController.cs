@@ -9,6 +9,8 @@ public class CollisionSoundController : MonoBehaviour
     private CollisionState collisionState;
     double lastPlayed;
 
+    const float timeBetweenPlays = 0.7f;
+
     public CollisionState GetCollisionState()
     {
         return collisionState;
@@ -37,7 +39,7 @@ public class CollisionSoundController : MonoBehaviour
     {
         collisionState = CollisionState.Enter;
         var currentTime = Time.time;
-        if(currentTime - lastPlayed > 0.3)
+        if(currentTime - lastPlayed > timeBetweenPlays)
         {
             collisionAudio.Play();
             lastPlayed = currentTime;
