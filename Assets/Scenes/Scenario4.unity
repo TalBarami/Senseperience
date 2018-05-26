@@ -386,7 +386,7 @@ Prefab:
     - target: {fileID: 114146132447481154, guid: 5207febab8eeda44283b4a105f3d014b,
         type: 2}
       propertyPath: myWorkSpacePosition.Array.data[1]
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114146132447481154, guid: 5207febab8eeda44283b4a105f3d014b,
         type: 2}
@@ -457,6 +457,11 @@ Prefab:
         type: 2}
       propertyPath: gain
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114146132447481154, guid: 5207febab8eeda44283b4a105f3d014b,
+        type: 2}
+      propertyPath: myWorkSpacePosition.Array.data[0]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114800144627049602, guid: 5207febab8eeda44283b4a105f3d014b, type: 2}
