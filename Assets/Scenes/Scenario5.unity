@@ -400,7 +400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30, y: 180, z: 0}
 --- !u!1 &439373150
 GameObject:
@@ -1122,75 +1122,65 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f31b44675a4c7634ba5120297d790b42, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1852584915
+--- !u!1001 &2079160676
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4377929630880450, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+    - target: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4377929630880450, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+    - target: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.75
+      value: -7.57
       objectReference: {fileID: 0}
-    - target: {fileID: 4377929630880450, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+    - target: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 4.06
+      value: 0.92
       objectReference: {fileID: 0}
-    - target: {fileID: 4377929630880450, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+    - target: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4377929630880450, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+    - target: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4377929630880450, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+    - target: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4377929630880450, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+    - target: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4377929630880450, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+    - target: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 198162320094770130, guid: d8b56b4d9f7ade24082aebbe30daa6c3,
-        type: 2}
-      propertyPath: InitialModule.startSpeed.minScalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198162320094770130, guid: d8b56b4d9f7ade24082aebbe30daa6c3,
-        type: 2}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 198162320094770130, guid: d8b56b4d9f7ade24082aebbe30daa6c3,
+    - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 2}
       propertyPath: InitialModule.startLifetime.minScalar
       value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 198162320094770130, guid: d8b56b4d9f7ade24082aebbe30daa6c3,
+    - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 2}
       propertyPath: InitialModule.startLifetime.scalar
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 198162320094770130, guid: d8b56b4d9f7ade24082aebbe30daa6c3,
+    - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 2}
-      propertyPath: startDelay.minMaxState
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198162320094770130, guid: d8b56b4d9f7ade24082aebbe30daa6c3,
-        type: 2}
-      propertyPath: startDelay.scalar
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d8b56b4d9f7ade24082aebbe30daa6c3, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 0d1adb20421ed664b800c8cf3d103e70, type: 2}
   m_IsPrefabParent: 0

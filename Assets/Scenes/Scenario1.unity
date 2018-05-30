@@ -376,7 +376,7 @@ Prefab:
     - target: {fileID: 114146132447481154, guid: 5207febab8eeda44283b4a105f3d014b,
         type: 2}
       propertyPath: myWorkSpacePosition.Array.data[1]
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1018394256084614, guid: 5207febab8eeda44283b4a105f3d014b, type: 2}
       propertyPath: m_IsActive

@@ -753,6 +753,16 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -45
       objectReference: {fileID: 0}
+    - target: {fileID: 82748911187365164, guid: 4b53dc94529425043b56f5456c42b3ac,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82624111089183494, guid: 4b53dc94529425043b56f5456c42b3ac,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b53dc94529425043b56f5456c42b3ac, type: 2}
   m_IsPrefabParent: 0
