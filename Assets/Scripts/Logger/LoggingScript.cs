@@ -106,14 +106,14 @@ namespace Assets.Scripts.Logger
             AddToLog("\n----------------------------- End Of Log -----------------------------");
 
             FlushToFile();
-
+            
             var vectors = ReadPositionsFromLogFile();
             _writer = new StreamWriter(GetLogPath(), true);
             _toPersist.Clear();
 
             for (int i = 0; i < vectors.Length; i++)
             {
-                if (vectors[i] != default(Vector3))
+                if (vectors[i] != default(Vector3) || vectors[i] == new Vector3(0, 0, 0))
                 {
                     AddToLog("Found Position: " + vectors[i]);
                 }
@@ -159,10 +159,6 @@ namespace Assets.Scripts.Logger
                 var current = lines[i];
                 //Debug.Log("Line " + i + ": " + current);
                 //Debug.Log("Line length = " + current.Length);
-
-
-                //Debug.Log("Converting \"" + current + "\" to vector");
-
                 vectors[i] = StringToVector3(current);
                 //Debug.Log("Read the following vector: " + vectors[i]);
 
@@ -175,9 +171,12 @@ namespace Assets.Scripts.Logger
 
         public static Vector3 StringToVector3(string sVector)
         {
-            if (sVector.Length < 3) return default(Vector3);
-                //Debug.Log("Removing parentheses");
-                sVector = sVector.Substring(1, sVector.Length - 3);
+            if (sVector.Length < 3) {
+                return default(Vector3);
+            }
+
+            //Debug.Log("Removing parentheses");
+            sVector = sVector.Substring(1, sVector.Length - 3);
             //Debug.Log("Splitting: "+sVector);
             string[] sArray = sVector.Split(',');
 
@@ -230,31 +229,29 @@ namespace Assets.Scripts.Logger
                 LogSavePath = Application.dataPath + "/Logs";
                 //Debug.Log("Log files path: " + LogSavePath);
 
-                if (!Directory.Exists(Application.dataPath))
-                {
-                    Directory.CreateDirectory(LogSavePath);
-                }
-
-                if (string.IsNullOrEmpty(FileName)) {
-                    SceneName = string.IsNullOrEmpty(SceneName) ? SceneManager.GetActiveScene().name : SceneName;
-                    FileName = DateTime.Now.ToFileTime() + "_" + SceneName + "_" + name;
-                }
+                CreateDirectoryPathIfMissing(LogSavePath);
+                CreateFileNameIfMissing();
+               
                 LogSavePath += "/" + FileName + ".txt";
             }
-
+            
             return LogSavePath;
         }
 
-        /*
-        void HandleLog(string logString, string stackTrace, LogType type)
-        {
-            using (var writer = new StreamWriter(_logSavePath, true))
+        void CreateDirectoryPathIfMissing(string path) {
+            if (!Directory.Exists(path))
             {
-                var typeCaps = type.ToString().ToUpper();
-                var dateTime = DateTime.Now;
-                writer.WriteLine(dateTime+" [" + typeCaps + "] " + logString);
+                Directory.CreateDirectory(path);
             }
-        }*/
+        }
+
+        void CreateFileNameIfMissing() {
+            if (string.IsNullOrEmpty(FileName))
+            {
+                SceneName = string.IsNullOrEmpty(SceneName) ? SceneManager.GetActiveScene().name : SceneName;
+                FileName = DateTime.Now.ToFileTime() + "_" + SceneName + "_" + name;
+            }
+        }
     }
 }
 
