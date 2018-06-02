@@ -34,3 +34,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.dll
+Assets/StarSparrow/SubstancePainter/StarSparrow.spp
+Assets/StarSparrow/SubstancePainter/StarSparrow.spp.meta

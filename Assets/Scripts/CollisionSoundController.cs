@@ -39,7 +39,7 @@ public class CollisionSoundController : MonoBehaviour
     {
         collisionState = CollisionState.Enter;
         var currentTime = Time.time;
-        if(currentTime - lastPlayed > timeBetweenPlays)
+        if(!collisionAudio.isPlaying && currentTime - lastPlayed > timeBetweenPlays)
         {
             collisionAudio.Play();
             lastPlayed = currentTime;

@@ -491,10 +491,10 @@ namespace Assets.Scenes
             var cubePrefab = GameObject.Find("Picture");
             Assert.NotNull(cubePrefab);
 
-            var cubePrefab = GameObject.Find("Saw");
+            cubePrefab = GameObject.Find("Saw");
             Assert.NotNull(cubePrefab);
 
-            var cubePrefab = GameObject.Find("Sylvanas");
+            cubePrefab = GameObject.Find("Sylvanas");
             Assert.NotNull(cubePrefab);
 
             //SceneManager.SetActiveScene(testScene);

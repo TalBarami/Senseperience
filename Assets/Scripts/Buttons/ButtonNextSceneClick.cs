@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ButtonNextSceneClick : ButtonClickScript
 {
+    const int scenesCount = 5;
     public override void Execute()
     {
         Debug.Log("Starting Game Scene");
         Destroy(GameObject.Find("Geomagic"));
-        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % scenesCount);
     }
 
     // Use this for initialization
