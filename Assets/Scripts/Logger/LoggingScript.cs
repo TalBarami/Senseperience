@@ -106,7 +106,7 @@ namespace Assets.Scripts.Logger
             AddToLog("\n----------------------------- End Of Log -----------------------------");
 
             FlushToFile();
-            
+            /*
             var vectors = ReadPositionsFromLogFile();
             _writer = new StreamWriter(GetLogPath(), true);
             _toPersist.Clear();
@@ -119,7 +119,7 @@ namespace Assets.Scripts.Logger
                 }
             }
 
-            FlushToFile();
+            FlushToFile();*/
         }
 
         private void FlushToFile()
