@@ -68,34 +68,14 @@ namespace Assets.Scripts.Logger
 
         }
 
-        private void WritePositionToLog(Vector3 position, DateTime logTime) {
-            AddToLog(PositionPrefix + position, logTime);
-            _lastWrittenDateTime = logTime;
-            _lastWrittenPosition = position;
-            transform.hasChanged = false;
-        }
-
-        private bool IsPositionChanged(Vector3 position)
+        void OnCollisionEnter(Collision col)
         {
-            var distance = Vector3.Distance(position, _lastWrittenPosition);
-            return distance > 0.01;
+            AddToLog("Collision Enter: Collided with " + col.gameObject.name, DateTime.Now);
         }
 
-        public void OnCollisionEnter(Collision col)
-        {
-            AddToLog("Collision Enter: Collided with "+col.gameObject.name, DateTime.Now);
-        }
-
-        public void OnCollisionExit(Collision col)
+        void OnCollisionExit(Collision col)
         {
             AddToLog("Collision Exit: Collided with " + col.gameObject.name, DateTime.Now);
-        }
-
-
-        private bool IsTimeToWrite(DateTime dateTime)
-        {
-            var timePassed = dateTime.Subtract(_lastWrittenDateTime);
-            return timePassed.TotalMilliseconds >= TimeIntervalInMilliseconds;
         }
 
         void OnDisable()
@@ -106,7 +86,7 @@ namespace Assets.Scripts.Logger
             AddToLog("\n----------------------------- End Of Log -----------------------------");
 
             FlushToFile();
-
+            
             var vectors = ReadPositionsFromLogFile();
             _writer = new StreamWriter(GetLogPath(), true);
             _toPersist.Clear();
@@ -122,6 +102,25 @@ namespace Assets.Scripts.Logger
             FlushToFile();
         }
 
+        private void WritePositionToLog(Vector3 position, DateTime logTime) {
+            AddToLog(PositionPrefix + position, logTime);
+            _lastWrittenDateTime = logTime;
+            _lastWrittenPosition = position;
+            transform.hasChanged = false;
+        }
+
+        private bool IsPositionChanged(Vector3 position)
+        {
+            var distance = Vector3.Distance(position, _lastWrittenPosition);
+            return distance > 0.01;
+        }
+
+        private bool IsTimeToWrite(DateTime dateTime)
+        {
+            var timePassed = dateTime.Subtract(_lastWrittenDateTime);
+            return timePassed.TotalMilliseconds >= TimeIntervalInMilliseconds;
+        }
+        
         private void FlushToFile()
         {
             if (_writer == null) return;
@@ -150,7 +149,7 @@ namespace Assets.Scripts.Logger
         {
             StreamReader reader = new StreamReader(GetLogPath());
             var inputFile = reader.ReadToEnd();
-            var lines = ExtractPsitionStrings(inputFile.Split("\n"[0]));
+            var lines = ExtractPositionStrings(inputFile.Split("\n"[0]));
             
             Vector3[] vectors = new Vector3[lines.Length];
 
@@ -173,7 +172,7 @@ namespace Assets.Scripts.Logger
             return vectors;
         }
 
-        public static Vector3 StringToVector3(string sVector)
+        private static Vector3 StringToVector3(string sVector)
         {
             if (sVector.Length < 3) return default(Vector3);
                 //Debug.Log("Removing parentheses");
@@ -187,7 +186,7 @@ namespace Assets.Scripts.Logger
                 float.Parse(sArray[2]));
         }
 
-        private string[] ExtractPsitionStrings(string[] lines)
+        private string[] ExtractPositionStrings(string[] lines)
         {
             var extracted = new string[lines.Length];
             for (int i = 0; i < lines.Length; i++)
@@ -210,7 +209,7 @@ namespace Assets.Scripts.Logger
             return "User_" + generatedShortGuid;
         }
 
-        public string GetUserName()
+        private string GetUserName()
         {
             if (!string.IsNullOrEmpty(UserName)) return UserName;
 
@@ -244,17 +243,6 @@ namespace Assets.Scripts.Logger
 
             return LogSavePath;
         }
-
-        /*
-        void HandleLog(string logString, string stackTrace, LogType type)
-        {
-            using (var writer = new StreamWriter(_logSavePath, true))
-            {
-                var typeCaps = type.ToString().ToUpper();
-                var dateTime = DateTime.Now;
-                writer.WriteLine(dateTime+" [" + typeCaps + "] " + logString);
-            }
-        }*/
     }
 }
 

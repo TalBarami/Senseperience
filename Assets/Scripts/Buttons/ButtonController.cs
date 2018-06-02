@@ -4,39 +4,30 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour {
     private bool clicking;
-    private string penName = "GeomagicPen";
+    private string penName;
+    private float clickInterval;
+    private float lastClicked;
 
     // Use this for initialization
     void Start()
     {
-        //clicking = false;
+        penName = "GeomagicPen";
+        clickInterval = lastClicked = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*Debug.Log("Clicking = " + clicking + " , transform z is: " + this.transform.localPosition.z);
-        if (clicking)
-        {
-            if(this.transform.localPosition.z > -0.15)
-            {
-                OnButtonClick();
-            }
-            else
-            {
-                this.transform.Translate((Vector3.forward * Time.deltaTime) / 5);
-            }
-        }
-        else if(this.transform.localPosition.z > -0.4)
-        {
-                this.transform.Translate((Vector3.back * Time.deltaTime) / 5);
-        }*/
+        lastClicked += Time.deltaTime;
     }
 
     void OnCollisionEnter(Collision other)
     {
-        //Debug.Log("Button collided: " + other.gameObject.name);
-        //clicking = other.gameObject.name == penName;
+        if(lastClicked < clickInterval)
+        {
+            return;
+        }
+        lastClicked = 0;
         OnButtonClick();
     }
 
