@@ -6,8 +6,10 @@ using UnityEngine;
 public class CollisionSoundController : MonoBehaviour
 {
     AudioSource collisionAudio;
-    AudioSource frictionAudio;
     private CollisionState collisionState;
+    double lastPlayed;
+
+    const float timeBetweenPlays = 0.7f;
 
     public CollisionState GetCollisionState()
     {
@@ -18,18 +20,13 @@ public class CollisionSoundController : MonoBehaviour
     {
         return collisionAudio;
     }
-
-    public AudioSource GetFrictionAudioSource()
-    {
-        return frictionAudio;
-    }
-
+    
     // Use this for initialization
     void Start()
     {
         var audios = GetComponents<AudioSource>();
         collisionAudio = audios[0];
-        frictionAudio = audios[1];
+        lastPlayed = Time.time;
         collisionState = CollisionState.None;
     }
 
@@ -41,20 +38,22 @@ public class CollisionSoundController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         collisionState = CollisionState.Enter;
-        Debug.Log("Collision Enter");
-        collisionAudio.Play();
+        var currentTime = Time.time;
+        if(currentTime - lastPlayed > timeBetweenPlays)
+        {
+            collisionAudio.Play();
+            lastPlayed = currentTime;
+        }
     }
 
     void OnCollisionStay(Collision collision)
     {
         collisionState = CollisionState.Stay;
-        Debug.Log("Collision Stay");
     }
 
     void OnCollisionExit(Collision collision)
     {
         collisionState = CollisionState.Exit;
-        Debug.Log("Collision Exit");
     }
 }
 

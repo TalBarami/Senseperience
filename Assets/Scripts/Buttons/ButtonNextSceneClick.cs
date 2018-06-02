@@ -9,17 +9,15 @@ public class ButtonNextSceneClick : ButtonClickScript
     {
         Debug.Log("Starting Game Scene");
         Destroy(GameObject.Find("Geomagic"));
-        Destroy(GameObject.Find("GeomagicPen"));
-        SceneManager.LoadScene(1 + (SceneManager.GetActiveScene().buildIndex % 3));
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
     }
 
     // Use this for initialization
     void Start () {
-		
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
 }

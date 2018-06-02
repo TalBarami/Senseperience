@@ -263,6 +263,7 @@ namespace Assets.Scenes
                                 var collisionAudio = colDetect.GetCollisionAudioSource();
                                 Assert.IsFalse(collisionAudio.isPlaying);
                                 break;
+
                             }
                     }
                     break;
