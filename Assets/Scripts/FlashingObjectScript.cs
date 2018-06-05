@@ -3,45 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlashingObjectScript : MonoBehaviour {
-    public float flashingInterval;
-
-    private bool isFlashing;
+    private float flashingInterval = 5;
+    private bool isFlashing = false;
+    private bool isActive = false;
     private float time = 0;
     private float flashSpeed = 5f;
 
-    private Renderer renderer;
+    private new Renderer renderer;
     private Color originalColor;
-    private Color normalColor;
+    private Color flashingColor;
 	// Use this for initialization
 	void Start () {
         renderer = GetComponent<Renderer>();
         originalColor = renderer.material.color;
+        flashingColor = Color.gray;//originalColor.Equals(Color.white) ? Color.gray : Color.white;
     }
-
-    bool a = false;
+    
 	// Update is called once per frame
 	void Update () {
+        if (!isActive)
+        {
+            return;
+        }
         time += Time.deltaTime;
-        Debug.Log("Time: " + time + "   isFlashing: " + isFlashing);
         if (isFlashing)
         {
-            //renderer.material.color = Color.Lerp(originalColor, Color.white, flashSpeed);
-            renderer.material.color = Color.Lerp(originalColor, Color.white, Mathf.PingPong(Time.time, 1)); 
-            a = !a;
-            if (time >= flashingInterval)
-            {
-                isFlashing = false;
-                time = 0;
-            }
+            renderer.material.color = Color.Lerp(originalColor, flashingColor, Mathf.PingPong(Time.time, 1));
         }
         else
         {
             renderer.material.color = originalColor;
-           if(time >= flashingInterval)
-            {
-                isFlashing = true;
-                time = 0;
-            }
         }
-	}
+
+        if (time >= flashingInterval)
+        {
+            isFlashing = !isFlashing;
+            time = 0;
+        }
+    }
+
+    public void SetActivation(bool isActive)
+    {
+        this.isActive = isActive;
+        if (renderer != null)
+        {
+            renderer.material.color = originalColor;
+        }
+    }
 }

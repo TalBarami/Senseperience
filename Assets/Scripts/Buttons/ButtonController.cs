@@ -8,8 +8,6 @@ public class ButtonController : MonoBehaviour {
     private float clickInterval;
     private float lastClicked;
 
-    public bool clicked = false;
-
     // Use this for initialization
     void Start()
     {
@@ -42,7 +40,6 @@ public class ButtonController : MonoBehaviour {
     void OnButtonClick()
     {
         //Debug.Log("OnButtonClick");
-        clicked = true;
         GetComponent<ButtonClickScript>().Execute();
     }
 }

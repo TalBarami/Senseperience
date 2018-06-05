@@ -5,17 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class ButtonNextSceneClick : ButtonClickScript
 {
+    private bool ready;
+
     public override void Execute()
     {
-        HotkeyManager.NextScene();   
+        if (ready)
+        {
+            HotkeyManager.NextScene();
+        }
+        
     }
 
     // Use this for initialization
     void Start () {
+        ready = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+    }
+
+    public void SetReady()
+    {
+        ready = true;
     }
 }
