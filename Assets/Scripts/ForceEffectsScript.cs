@@ -97,7 +97,6 @@ public class ForceEffectsScript : HapticClassScript
 
     void Update()
     {
-
         /***************************************************************/
         //Update Workspace as function of camera
         /***************************************************************/

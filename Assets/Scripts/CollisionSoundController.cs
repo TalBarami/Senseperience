@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class CollisionSoundController : MonoBehaviour
 {
-    AudioSource collisionAudio;
+    public int playingDelay;
+
+    private AudioSource collisionAudio;
     private CollisionState collisionState;
-    double lastPlayed;
+    private double lastPlayed;
 
     const float timeBetweenPlays = 0.7f;
 
@@ -26,7 +28,7 @@ public class CollisionSoundController : MonoBehaviour
     {
         var audios = GetComponents<AudioSource>();
         collisionAudio = audios[0];
-        lastPlayed = Time.time;
+        lastPlayed = Time.realtimeSinceStartup - (timeBetweenPlays + playingDelay);
         collisionState = CollisionState.None;
     }
 
@@ -38,8 +40,8 @@ public class CollisionSoundController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         collisionState = CollisionState.Enter;
-        var currentTime = Time.time;
-        if(!collisionAudio.isPlaying && currentTime - lastPlayed > timeBetweenPlays)
+        var currentTime = Time.realtimeSinceStartup;
+        if(!collisionAudio.isPlaying && currentTime - lastPlayed > (timeBetweenPlays + playingDelay))
         {
             collisionAudio.Play();
             lastPlayed = currentTime;

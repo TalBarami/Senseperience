@@ -688,7 +688,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4606285091870602, guid: f31b44675a4c7634ba5120297d790b42, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.851
+      value: -2.18
       objectReference: {fileID: 0}
     - target: {fileID: 4606285091870602, guid: f31b44675a4c7634ba5120297d790b42, type: 2}
       propertyPath: m_LocalPosition.y
@@ -777,6 +777,28 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 179042, guid: 9eaed0879dcfc15498cad5beb8c4dcba, type: 2}
   m_PrefabInternal: {fileID: 1991803393}
+--- !u!114 &1546173117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546173116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677ebbb83caddfd47bca964499877ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stiffness: 0.5
+  damping: 0.5
+  staticFriction: 1
+  dynamicFriction: 0.5
+  tangentialStiffness: 0
+  tangentialDamping: 0
+  popThrough: 0
+  puncturedStaticFriction: 0
+  puncturedDynamicFriction: 0
+  mass: 0
+  fixedObj: 0
 --- !u!114 &1546173118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,6 +1018,28 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 173334, guid: 2cd5d52bec1bbd74aa18e7ef142a8cd0, type: 2}
   m_PrefabInternal: {fileID: 883065920}
+--- !u!114 &1707851241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707851240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677ebbb83caddfd47bca964499877ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stiffness: 0.5
+  damping: 0.5
+  staticFriction: 1
+  dynamicFriction: 0.5
+  tangentialStiffness: 0
+  tangentialDamping: 0
+  popThrough: 0
+  puncturedStaticFriction: 0
+  puncturedDynamicFriction: 0
+  mass: 0
+  fixedObj: 0
 --- !u!114 &1707851242
 MonoBehaviour:
   m_ObjectHideFlags: 0
