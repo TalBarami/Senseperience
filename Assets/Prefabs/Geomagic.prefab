@@ -36,6 +36,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4909192565129622}
+  - component: {fileID: 114022010615166224}
+  - component: {fileID: 114340316214680390}
   - component: {fileID: 114231576432915852}
   - component: {fileID: 114146132447481154}
   - component: {fileID: 114396607613617040}
@@ -132,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018394256084614}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 2, z: -5}
+  m_LocalPosition: {x: 0, y: 1.2, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4909192565129622}
@@ -430,6 +432,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114022010615166224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199822810770432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e080d705a13978a40afe6f90cec5a587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  required: []
 --- !u!114 &114110949899061430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,11 +476,11 @@ MonoBehaviour:
   hapticCursor: {fileID: 1628160041225384}
   myWorkSpacePosition:
   - 0
-  - 3
-  - 0
+  - 2
+  - -3.5
   myWorkSpaceSize:
   - 10
-  - 8
+  - 5
   - 10
   device2Name: 
   mySecondHapticCamera: {fileID: 0}
@@ -499,7 +513,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1199822810770432}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba949135bec396408eb8e03a0a81d60, type: 3}
   m_Name: 
@@ -543,7 +557,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
---- !u!114 &114396607613617040
+--- !u!114 &114340316214680390
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -551,13 +565,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1199822810770432}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b22e085a184bd49bac0941d9433b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114396607613617040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199822810770432}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfe4022347755cd46abf0d6955c28b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Type: constant
   effect_index: 0
-  gain: 0.05
-  magnitude: 0.3
+  gain: 0
+  magnitude: 0
   duration: 0
   frequency: 0
   positionEffect:
@@ -566,7 +591,7 @@ MonoBehaviour:
   - 0
   directionEffect:
   - 0
-  - 1
+  - 0
   - 0
 --- !u!114 &114500977835026664
 MonoBehaviour:

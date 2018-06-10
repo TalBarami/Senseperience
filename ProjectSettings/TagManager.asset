@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Touchable
   - HapticConfiguration
+  - NextSceneButton
   layers:
   - Default
   - TransparentFX
