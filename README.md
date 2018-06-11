@@ -15,7 +15,7 @@ The user can explore the scenes, travel between them and interact with the objec
 Sample Video:
 
 
-[![Example Video](http://img.youtube.com/vi/-6p5USKDlfE/0.jpg)](http://www.youtube.com/watch?v=-6p5USKDlfE)
+[![Sample Video](http://img.youtube.com/vi/-6p5USKDlfE/0.jpg)](http://www.youtube.com/watch?v=-6p5USKDlfE)
 
 
 
