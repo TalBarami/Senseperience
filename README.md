@@ -12,13 +12,14 @@ Each scene is composed of a different room or environment, containing objects fr
 The user can explore the scenes, travel between them and interact with the objects.
 
 
-![alt text](https://github.com/TalBarami/Senseperience/blob/master/resources/scene4.png "Scene 4: Upside-Down")
-
-
-![alt text](https://github.com/TalBarami/Senseperience/blob/master/resources/scene5.png "Scene 5: Under The Sea")
-
-
-Example Video:
+Sample Video:
 
 
 [![Example Video](http://img.youtube.com/vi/-6p5USKDlfE/0.jpg)](http://www.youtube.com/watch?v=-6p5USKDlfE)
+
+
+
+![scene4](https://github.com/TalBarami/Senseperience/blob/master/resources/scene4.png "Scene 4: Upside-Down")
+
+
+![scene5](https://github.com/TalBarami/Senseperience/blob/master/resources/scene5.png "Scene 5: Under The Sea")
