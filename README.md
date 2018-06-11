@@ -12,7 +12,6 @@ Each scene is composed of a different room or environment, containing objects fr
 The user can explore the scenes, travel between them and interact with the objects.
 
 Example Video:
-[![Example Video](http://img.youtube.com/vi/-6p5USKDlfE/0.jpg)](http://www.youtube.com/watch?v=-6p5USKDlfE)
 
-Images:
-![alt text](https://drive.google.com/open?id=176URrYwgJ6ENDXgmxQis6Xs-xovcYXLEl "Logo Title Text 1")
+
+[![Example Video](http://img.youtube.com/vi/-6p5USKDlfE/0.jpg)](http://www.youtube.com/watch?v=-6p5USKDlfE)
