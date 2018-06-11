@@ -11,6 +11,13 @@ During the development process we focused on creating an integrated system betwe
 Each scene is composed of a different room or environment, containing objects from a variety of materials and textures.
 The user can explore the scenes, travel between them and interact with the objects.
 
+
+![alt text](https://github.com/TalBarami/Senseperience/blob/master/resources/scene4.png "Scene 4: Upside-Down")
+
+
+![alt text](https://github.com/TalBarami/Senseperience/blob/master/resources/scene5.png "Scene 5: Under The Sea")
+
+
 Example Video:
 
 
