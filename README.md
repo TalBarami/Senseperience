@@ -11,7 +11,8 @@ During the development process we focused on creating an integrated system betwe
 Each scene is a different room or environment, containing objects from a variety of materials and textures.
 The user can explore the scenes, travel between them and interact with the objects.
 
+Example Video:
+https://drive.google.com/open?id=1VwPFkjw9nrl5Jvpz0RrDzjIuGH0c8aPZ
 
-<a href="https://drive.google.com/open?id=1VwPFkjw9nrl5Jvpz0RrDzjIuGH0c8aPZ" target="_blank">
-<img src="https://drive.google.com/open?id=1VwPFkjw9nrl5Jvpz0RrDzjIuGH0c8aPZ/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+Images:
+![alt text](https://drive.google.com/open?id=176URrYwgJ6ENDXgmxQis6Xs-xovcYXLEl "Logo Title Text 1")
