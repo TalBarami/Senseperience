@@ -12,7 +12,7 @@ public class SceneGuide : MonoBehaviour {
         nextSceneButton = GameObject.FindGameObjectWithTag("NextSceneButton");
 
         required.ForEach(gameObject => gameObject.AddComponent<FlashingObjectScript>().SetActivation(true));
-        nextSceneButton.AddComponent<FlashingObjectScript>().SetActivation(false);
+        nextSceneButton.AddComponent<FlashingObjectScript>().SetActivation(true); //TODO: Set to false.
     }
 
     // Update is called once per frame

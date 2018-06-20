@@ -18,7 +18,8 @@ public class ButtonNextSceneClick : ButtonClickScript
 
     // Use this for initialization
     void Start () {
-        ready = false;
+        //ready = false;
+        ready = true; // TODO: Decide if we keep this one.
     }
 	
 	// Update is called once per frame

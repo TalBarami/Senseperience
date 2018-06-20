@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/3dMenu.unity
-    guid: 11a08e70ec93e7945bc1592baa56f025
   - enabled: 1
     path: Assets/Scenes/Scenario1.unity
     guid: e6eaef2313b02ca49bc46de61af4b2f3
@@ -24,20 +21,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Scenario5.unity
     guid: e2f1afcc89a36c947b1622afde1d3d09
   - enabled: 1
-    path: Assets/Scenes/TestDecoration.unity
+    path: Assets/Scenes/Tests/TestDecoration.unity
     guid: ba5615c93e7031a48ae1bdbc68fd7672
   - enabled: 1
-    path: Assets/Scenes/TestBox.unity
+    path: Assets/Scenes/Tests/TestBox.unity
     guid: 7c06db0fb22ba9f4c8036f97285ae78e
   - enabled: 1
-    path: Assets/Scenes/TestButton.unity
+    path: Assets/Scenes/Tests/TestButton.unity
     guid: 9152736208194f843982a21be1c6cf8e
   - enabled: 1
-    path: Assets/Scenes/TestMusic.unity
+    path: Assets/Scenes/Tests/TestMusic.unity
     guid: 46b0b1fbad158df45a76cc620fbf1938
   - enabled: 1
-    path: Assets/Scenes/TestRoom.unity
+    path: Assets/Scenes/Tests/TestRoom.unity
     guid: 69a960d9b3dd4b04bb70c9eb5ae5a8e8
   - enabled: 1
-    path: Assets/Scenes/TestSphere.unity
+    path: Assets/Scenes/Tests/TestSphere.unity
     guid: f2ea5126657e0734db4d2d31f21b4862

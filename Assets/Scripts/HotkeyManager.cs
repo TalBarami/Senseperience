@@ -7,7 +7,7 @@ public class HotkeyManager : MonoBehaviour
     private const int scenesCount = 5;
 
 
-    private KeyCode hotkeyReset = KeyCode.Home;
+    private KeyCode hotkeyReset = KeyCode.R;
     private KeyCode hotkeyNext = KeyCode.N;
     private KeyCode hotkeyPrevious = KeyCode.P;
     // Use this for initialization
